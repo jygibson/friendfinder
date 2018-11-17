@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <div class = "container">
+<h2> Survey Questions</h2>
+<hr>
+<h3><strong>About You</strong></h3>
+<h4> Name (required): </h4>
+<input type = "text" id = "name">
+<h4>Link to a Photo of You (required):</h4>
+<input type = "text" id = "photo">
+<hr>
+<h5>I like outdoor adventures.</h5>
+<select class = "chosen-select" id = "q1">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5>I'm more of an 'indoorsman', if you get my drift.</h5>
+<select class = "chosen-select" id = "q2">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5>I love getting coffee</h5>
+<select class = "chosen-select" id = "q3">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5>Coffee is overrated</h5>
+<select class = "chosen-select" id = "q4">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5>I'm pretty high maintenance.</h5>
+<select class = "chosen-select" id = "q5">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5> I'm pretty low maintenance</h5>
+<select class = "chosen-select" id = "q6">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5> I'm more of an introvert</h5>
+<select class = "chosen-select" id = "q7">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5> I'm definitely an extrovert!</h5>
+<select class = "chosen-select" id = "q8">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5> I prefer mountain vacations</h5>
+<select class = "chosen-select" id = "q9">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<h5>I prefer beach vacations</h5>
+<select class = "chosen-select" id = "q10">
+<option value>Select an Option!</option>
+<option value = "1"> 1 (strongly disagree) </option>
+<option value = "2"> 2  </option>
+<option value = "3"> 3  </option>
+<option value = "4"> 4 </option>
+<option value = "5"> 5 (strongly agree) </option>
+</select>
+<br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+        Find a Friend!
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">your new best friend is: </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary btn-block"> Retake the Survey</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="links">
+        <a href="/api/friends">API Friends List</a> | <a href="#github repo">GitHub Repo</a>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+<script type = "text/javascript">
+    //on submit, capture the values of each field
+$(".btn").on("click", function(event){
+    event.preventDefault();
+
+    var newFriend = {
+       friendName: $("#name").val().trim(),
+       friendPhoto: $("#photo").val().trim(),
+       q1: $("#q1").val().trim(),
+       q2: $("#q2").val().trim(),
+       q3: $("#q3").val().trim(),
+       q4: $("#q4").val().trim(),
+       q5: $("#q5").val().trim(),
+       q6: $("#q6").val().trim(),
+       q7: $("#q7").val().trim(),
+       q8: $("#q8").val().trim(),
+       q9: $("#q9").val().trim(),
+       q10:$("#q10").val().trim()
+    }
+
+    console.log(newFriend)
+
+    $.post("/api/friends", newFriend, function(data){
+        if (data){
+            alert ("your info has been submitted!")
+        }
+
+        //clear the data
+
+        $("#name").val("");
+        $("#photo").val("");
+        $("#q1").val("");
+        $("#q2").val("");
+        $("#q3").val("");
+        $("#q4").val("");
+        $("#q5").val("");
+        $("#q6").val("");
+        $("#q7").val("");
+        $("#q8").val("");
+        $("#q9").val("");
+        $("#q10").val("");
+    });
+});
+
+
+
+
+</script>
