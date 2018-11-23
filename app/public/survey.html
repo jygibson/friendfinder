@@ -120,13 +120,14 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">your new best friend is: </h5>
+              <h5 class="modal-title" id="exampleModalLabel">Your new best friend is: </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ...
+              <div id="matchname"></div>
+              <div id="matchimage"></div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -153,28 +154,27 @@ $(".btn").on("click", function(event){
     var newFriend = {
        friendName: $("#name").val().trim(),
        friendPhoto: $("#photo").val().trim(),
-       q1: $("#q1").val().trim(),
-       q2: $("#q2").val().trim(),
-       q3: $("#q3").val().trim(),
-       q4: $("#q4").val().trim(),
-       q5: $("#q5").val().trim(),
-       q6: $("#q6").val().trim(),
-       q7: $("#q7").val().trim(),
-       q8: $("#q8").val().trim(),
-       q9: $("#q9").val().trim(),
-       q10:$("#q10").val().trim()
+       scores: [
+       $("#q1").val().trim(),
+       $("#q2").val().trim(),
+       $("#q3").val().trim(),
+       $("#q4").val().trim(),
+       $("#q5").val().trim(),
+       $("#q6").val().trim(),
+       $("#q7").val().trim(),
+       $("#q8").val().trim(),
+       $("#q9").val().trim(),
+       $("#q10").val().trim()
+    ]
     }
 
     console.log(newFriend)
 
     $.post("/api/friends", newFriend, function(data){
-        if (data){
-            alert ("your info has been submitted!")
-        }
-
-        //clear the data
-
-        $("#name").val("");
+console.log("blergh")
+    });
+    //clear the data
+    $("#name").val("");
         $("#photo").val("");
         $("#q1").val("");
         $("#q2").val("");
@@ -186,7 +186,6 @@ $(".btn").on("click", function(event){
         $("#q8").val("");
         $("#q9").val("");
         $("#q10").val("");
-    });
 });
 
 
