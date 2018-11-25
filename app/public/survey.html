@@ -122,6 +122,7 @@
     </button>
 
     <!-- Modal -->
+    <div class="container">
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -134,7 +135,7 @@
           </div>
           <div class="modal-body">
             <div id="matchname"></div>
-            <div id="matchimage"></div>
+            <img id="matchimage" alt="" style="object-fit: contain"/>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -142,10 +143,11 @@
         </div>
       </div>
     </div>
+    </div>
 
 
     <div class="links">
-      <a href="/api/friends">API Friends List</a> | <a href="#github repo">GitHub Repo</a>
+      <a href="/api/friends">API Friends List</a> | <a href="https://github.com/jygibson/friendfinder.git">GitHub Repo</a>
     </div>
   </div>
   </div>
@@ -175,10 +177,12 @@
       ]
     }
 
+    console.log(newFriend)
+
     $.post("/api/friends", newFriend, function (data) {
       console.log(data);
       $("#matchname").text(data.friendName);
-      $("#matchimage").append(data.friendPhoto);
+      $("#matchimage").attr("src", data.friendPhoto);
     });
     //clear the data
     $("#name").val("");
