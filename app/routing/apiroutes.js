@@ -13,61 +13,38 @@ module.exports = function (app) {
     //using app.post we indicate what the server should do with received data
 
     app.post("/api/friends", function (request, response) {
-        //getting user's scores for comparison
-        console.log(request.body)
-        var scoresAll = [];
-        //a perfect match would have a score of 0
-        var bestMatchScore = 0;
-        var versusArray = [];
-        var sum = 0;
-        var newFriendScore = request.body.scores;
+       //saving the incoming friend data body
+       const newFriend = request.body;
+       //create a variable for the best match score and start it high. As the scores are calculated it will be replaced
+       let bestMatchScore = 100;
+       //the next variable is best match index, which is the array index of the best match
+        let bestMatchIndex = 0;
 
+        //the Array.map() function  creates a new array with the results of calling the same function for every index in the array. we will use 
+        //it to iterate through all
+        friendData.map((friend, index) => {
+            //then use  Array.reduce() for the calculations
+            const score = friend.scores.reduce((accumulator, currentValue, i) => {
+                return accumulator + Math.abs(parseInt(currentValue)- parseInt(newFriend.scores[i]));
+            }, 0)
 
-        function scoreTotals() {
-            for (let a = 0; a < friendData.length; a++) {
-                for (let s = 0; s < newFriendScore.length; s++) {
-                    var friendScoresArray = [];
-                    friendScoresArray.push(friendData[a].scores)
-                    var matchScore = Math.abs(
-                        parseInt(friendScoresArray[s])- parseInt(newFriendScore[s])
-                    );
-                    console.log("new friend score " + newFriendScore[s]);
-                    console.log("the friendscoresarray " + friendScoresArray[s]);
-                    console.log("the match score is " + matchScore);
-                   var friendScoresArray = [];
+            //console.log for the scoring
+            console.log(`Calculated score for ${friendData[index].friendName} and ${newFriend.friendName}: ${score}`);
 
-                   versusArray.push(matchScore);
-                };
-            };
-        };
+            //use result comparison to find best score
 
-        function sumArray() {
-            console.log("the versus array " + versusArray)
-            for (let i = 0; i < versusArray.length; i++) {
-                sum += versusArray[i]
+            if (score < bestMatchScore){
+                bestMatchIndex = index;
+                bestMatchScore = score;
             }
-            console.log("the sum is: " + sum)
-            scoresAll.push(sum);
-            console.log("the scores all array " + scoresAll)
-        }
+        });
 
-        for (let i = 0; i < friendData.length; i++) {
-            //another for loop within for comparing the newFriendScore
-            scoreTotals();
-            sumArray();
-            versusArray = [];
-        }
-
-        // console.log("the scores all array " + scoresAll)
-
-        for (let i = 0; i < scoresAll.length; i++) {
-            if (scoresAll[i] <= scoresAll[bestMatchScore]) {
-                bestMatchScore = i;
-            }
-        }
-
-        var bestie = friendData[bestMatchScore]
-        console.log("your new bestie" + bestie)
+         // A few more console logs to see the action after the loop.
+         console.log(`BEST MATCH: ${friendData[bestMatchIndex].friendName}`)
+         console.log('INDEX in friendData ARRAY: ', bestMatchIndex);
+ 
+         // Return friend with the lowest score back to the client who issued request.
+         response.json(friendData[bestMatchIndex]);
 
         friendData.push(request.body);
     })
